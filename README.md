@@ -1,5 +1,6 @@
 Di seguito la struttura degli oggeti che vengono create attraverso kustomize.
 
+
 |-- CronJobJavaDiag
 |   |-- README.md
 |   |-- cronJob.yaml
@@ -10,7 +11,11 @@ Di seguito la struttura degli oggeti che vengono create attraverso kustomize.
 |   |-- serviceAccount.yaml
 |   `-- ubi8.yaml
 
-Eseguire questo comando per creare gli oggetti attraverso kustomize oc create -k CronJobJavaDiag
+Valorizzare i manifest con il namespace target.
+
+Eseguire questo comando per creare gli oggetti attraverso kustomize 
+
+- oc create -k CronJobJavaDiag
 
 Acceedere al pod ubi8 per verificare l'output dei tools diagnostici esegiti dal cronjob oc rsh ubi8
 
