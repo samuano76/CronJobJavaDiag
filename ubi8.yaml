@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubi8
+  namespace: <namespace>
+spec:
+  imagePullSecrets:
+    - name: registry-pull-secret
+  containers:
+    - name: busybox
+      image: registry.redhat.io/ubi8/toolbox
+      command: ["/bin/sh"]
+      args: ["-c", "while true; do echo test;sleep 10;done"]
+      resources:
+        limits:
+          memory: "800Mi"
+          cpu: "1500m"
+        requests:
+          memory: "20Mi"
+          cpu: "100m"
+      volumeMounts:
+        - name: diagpvc
+          mountPath: /tmp
+  volumes:
+    - name: diagpvc
+      persistentVolumeClaim:
+        claimName: diagpvc

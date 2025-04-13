@@ -1,0 +1,44 @@
+kind: CronJob
+apiVersion: batch/v1
+metadata:
+  name: javadiagnostic
+  namespace: <namespace>
+  labels:
+    app: javadiagnostic
+spec:
+  schedule: "*/1 * * * *"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 5
+  failedJobsHistoryLimit: 5
+  jobTemplate:
+    metadata:
+      labels:
+        app: javadiagnostic
+    spec:
+      backoffLimit: 0
+      template:
+        metadata:
+          labels:
+            app: javadiangostic
+        spec:
+          containers:
+            - name: javadiag
+              image: "registry.redhat.io/openshift4/ose-cli"
+              command:
+                - "/bin/bash"
+                - "-c"
+                - oc exec ex-aao-ss-0 -n amqbroker -- jcmd 1 Thread.print > /tmp/Thread
+              volumeMounts:
+                - name: diag
+                  mountPath: /tmp
+          restartPolicy: "Never"
+          terminationGracePeriodSeconds: 30
+          activeDeadlineSeconds: 500
+          dnsPolicy: "ClusterFirst"
+          serviceAccountName: "javadiag"
+          serviceAccount: "javadiag"
+          volumes:
+            - name: diag
+              persistentVolumeClaim:
+                claimName: diagpvc
+

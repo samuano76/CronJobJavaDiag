@@ -1,0 +1,16 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: javadiag
+  namespace: <namespace>
+rules:
+- apiGroups: [""]
+  resources:
+     - "nodes"
+  verbs: ["get", "list"]
+- apiGroups: [""]
+  resources:
+     - "pods"
+     - "pods/log"
+     - "pods/exec"
+  verbs: ["get", "list", "create", "delete", "watch"]

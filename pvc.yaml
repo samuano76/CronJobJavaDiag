@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    volume.beta.kubernetes.io/storage-provisioner: openshift-storage.cephfs.csi.ceph.com
+    volume.kubernetes.io/storage-provisioner: openshift-storage.cephfs.csi.ceph.com
+  name: diagpvc
+  namespace: <namespace>
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: ocs-storagecluster-cephfs
+  volumeMode: Filesystem

@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- serviceAccount.yaml
+- role.yaml
+- roleBinding.yaml
+- pvc.yaml
+- cronjob.yaml
+- ubi8.yaml
+secretGenerator:
+- name: registry-pull-secret
+  literals:
+    - docker-username=16747317|samoano
+    - docker-password=eyJhbGciOiJSUzUxMiJ9.eyJzdWIiOiI4Mzg2ZjI0M2ViM2I0NWNlYjdjMGJlODdiYTMxN2I4OSJ9.XqpKxeErZeOYSZEaC9pSyCKV8pO-17ONa-8ZbRjb2Qc2mHNtHI23djfwJheWqknkepfknaA_vAAuaEAGDJepAr4nPRe8C8wpo7povo_3kISIkJlfWLIW-RmO_ttpLjoK7LJdXZxKVcKvBwRL2Ry4Q5kewQqVovjwlVz3YjzDHVFnHeXSYqg_DloCYxQBmdImLZQSqsLyy6JHHmdqpc9dVSVuyoZbUibGiMDahGw1FeibCiSmgIGl3AjSM_WYyCKoB-bVitua0wBztCFpW1Dr9K-zGjN6nrzl5WUX6QAwBNvbgsPswxESrGAgw72XB7HTlK6auuD-2X0--fNWZ2T3oHv0MeIe33jPREGl8LKIvFAsOz4MvXXp3ZGPhdb_XXZpkBqo_sO8vJidjZKn_ZLPTQbZheM7WdBYZSc5HMx8PTBhAhZPfNXJGD4PLspGIzd9rNEgOLG9dEMusmHG8Pf-NT4ZGymc0odgvfsemaGP_1w8464D0ITL0-ycUNQpNvvHaN3sjmnYTQVj_IRQ-WsOupNNxoTFECzM3cvW9ezYUEwdj3w4yWGdZFHUijOwo4ZBJFl_naGxKHOAlQur8AeUii9tTv1tI8zsPyDPEyW7EOdu-_6VzcTEers4Osvg1_dU8esCsxF58DFOxJMBV9-xgyxE1DX2SDcuUS7MmEmmiBA
+generatorOptions:
+  disableNameSuffixHash: true
