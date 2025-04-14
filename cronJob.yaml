@@ -27,7 +27,7 @@ spec:
               command:
                 - "/bin/bash"
                 - "-c"
-                - oc exec ex-aao-ss-0 -n amqbroker -- jcmd 1 Thread.print > /tmp/Thread
+                - oc exec ex-aao-ss-0 -n <namespace> -- jcmd 1 Thread.print > /tmp/Thread
               volumeMounts:
                 - name: diag
                   mountPath: /tmp
