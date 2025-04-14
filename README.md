@@ -14,7 +14,7 @@ Di seguito gli oggetti che verranno creati attraverso kustomize.
   - serviceAccount.yaml
   - ubi8.yaml
 
-Valorizzare ogni manifest con il namespace target al post del placeholder attualmente impostato (<namespace>).
+Valorizzare ogni manifest con il namespace target al post del placeholder attualmente impostato (/<namespace/>).
 Il namespace target dovrà essere lo stesso del workload da analizzare.
 Nel comando da eseguire all'interno del cronjob dovrà essere indicato il pod target dell'analisi.
 
