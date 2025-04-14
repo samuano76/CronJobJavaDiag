@@ -39,4 +39,8 @@ Acceedere al pod ubi8 per verificare l'output dei tools diagnostici esegiti dal 
 Gli output verranno depositati all'interno della /tmp.
 Una volta all'interno del pod verficare nel path /tmp.
 
-Se si desidera eseguire ulteriori tools disponibili nella ubi8, richiamarli all'interno del cronjob aggiungendoli o sostituendoli al comando attuamente utilizzato.
+Se si desidera eseguire ulteriori tools disponibili nel pod, richiamarli all'interno del cronjob aggiungendoli o sostituendoli al comando attuamente utilizzato.
+
+Eseguire questo comando per eliminare tutti gli oggetti:
+
+- oc delete -k CronJobJavaDiag
