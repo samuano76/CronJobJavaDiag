@@ -14,13 +14,12 @@ Di seguito gli oggetti che verranno creati attraverso kustomize.
   - serviceAccount.yaml
   - ubi8.yaml
 
-Valorizzare ogni manifest con il namespace target al post del placeholder attualmente impostato (/<namespace/>).
-Il namespace target dovrà essere lo stesso del workload da analizzare.
-Nel comando da eseguire all'interno del cronjob dovrà essere indicato il pod target dell'analisi.
+CronJobJavaDiag dovrà essere in esecuzione all'interno dello stesso namespace del workload da analizzare.
+Valorizzare di conseguenza ogni manifest con il namespace target al post del placeholder attualmente impostato.
 
-Il cronjob attuale riporta un esempio di esecuzione con jcmd, ma questo può essere sostituito con qualsiasi altro tool presente all'interno della ubi8 in esecuzione.
+Il cronjob attuale riporta un esempio di esecuzione con il tool jcmd, ma questo può essere sostituito con qualsiasi altro tool presente all'interno del pod in esecuzione.
 
-- oc exec ex-aao-ss-0 -n amqbroker -- jcmd 1 Thread.print > /tmp/Thread
+- oc exec ex-aao-ss-0 -- jcmd 1 Thread.print > /tmp/Thread
 
 Nel comando vengono indicati il pod target (ex-aaa-ss-0), il tool (jcmd) e infine il path in cui depositare l'output (/tmp).
 
